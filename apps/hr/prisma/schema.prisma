@@ -6,3 +6,322 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
+
+model CompanyCalendar {
+  calendarType Int?      @map("calendar_type") @db.SmallInt
+  configNotify Json?     @map("config_notify") @db.Json
+  duration     Int?      @db.SmallInt
+  endDate      DateTime? @map("end_date") @db.Timestamptz(6)
+  id           String    @id(map: "Company.Meeting_pkey") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  location     String?
+  members      Json?     @db.Json
+  name         String?
+  note         String?
+  startDate    DateTime? @map("start_date") @db.Timestamptz(6)
+  userInfo     UserInfo? @relation(fields: [hoster_id], references: [id])
+  hoster_id    String?
+
+  @@map("Company.Calendar")
+  @@schema("public")
+}
+
+model CompanyDocument {
+  description String?
+  fileSize    BigInt?   @map("file_size")
+  fileType    String?   @map("file_type")
+  id          BigInt    @id @default(autoincrement())
+  name        String
+  path        String?
+  publishedAt DateTime? @map("published_at") @db.Timestamptz(6)
+
+  @@map("Company.Document")
+  @@schema("public")
+}
+
+model CompanyJob {
+  contractTypeId String? @map("contract_type_id") @db.Uuid
+  department     String? @db.Uuid
+  descriptionJob String? @map("description_job")
+  id             String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  location       String?
+  stages         String?
+  title          String?
+
+  @@map("Company.Job")
+  @@schema("public")
+}
+
+model CompanyJobApply {
+  address      String?
+  companyJobId String? @map("company_job_id") @db.Uuid
+  email        String?
+  fullName     String? @map("full_name")
+  id           String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  phone        String?
+  resumePath   String? @map("resume_path")
+  status       Int?    @db.SmallInt
+
+  @@map("Company.Job.Apply")
+  @@schema("public")
+}
+
+model CompanyNew {
+  content       String?
+  id            String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  imagePath     String?   @map("image_path")
+  publishedDate DateTime? @map("published_date") @db.Timestamptz(6)
+  status        Int?      @db.SmallInt
+  tags          String?
+  title         String?
+  userInfo      UserInfo? @relation(fields: [author_id], references: [id])
+  author_id     String?
+
+  @@map("Company.News")
+  @@schema("public")
+}
+
+model CompanyRecognition {
+  description   String?
+  id            String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  requesterInfo UserInfo? @relation(name: "CompanyRecognitionRequesterInfoUserInfoRequesterInfo", fields: [requester_id], references: [id])
+  requester_id  String?
+  title         String?
+  userInfo      UserInfo? @relation(name: "CompanyRecognitionUserInfoUserInfoUserInfo", fields: [user_id], references: [id])
+  user_id       String?
+
+  @@map("Company.Recognition")
+  @@schema("public")
+}
+
+model CompanyStructure {
+  code        String?
+  description String?
+  id          String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name        String?
+  parentId    String? @map("parent_id") @db.Uuid
+
+  @@map("Company.Structure")
+  @@schema("public")
+}
+
+model CompanySurvey {
+  companySurveyFields CompanySurveyField[]
+  description         String?
+  id                  String               @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name                String?
+  userSurveyResponse  UserSurveyResponse[]
+
+  @@map("Company.Survey")
+  @@schema("public")
+}
+
+model CompanySurveyField {
+  companySurvey CompanySurvey? @relation(fields: [survey_id], references: [id])
+  survey_id     String?
+  fieldConfig   Json?          @map("field_config") @db.Json
+  fieldType     String?        @map("field_type")
+  id            String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  isRequired    Boolean?       @map("is_required")
+  label         String?
+  position      Int?           @db.SmallInt
+
+  @@map("Company.Survey.Fields")
+  @@schema("public")
+}
+
+model MasterdataAsset {
+  code           String?
+  id             String  @id(map: "Asset_pkey") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name           String?
+  remainingAsset BigInt? @map("remaining_asset")
+  totalAsset     BigInt? @map("total_asset")
+
+  @@map("Masterdata.Asset")
+  @@schema("public")
+}
+
+model MasterdataRole {
+  code        String?
+  description String?
+  id          String  @id(map: "Role_pkey") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name        String?
+
+  @@map("Masterdata.Role")
+  @@schema("public")
+}
+
+model MasterdataTask {
+  configField Json?    @map("config") @db.Json
+  description String?
+  id          String   @id(map: "Tasks_pkey") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  isActive    Boolean? @map("is_active")
+  name        String?
+
+  @@map("Masterdata.Tasks")
+  @@schema("public")
+}
+
+model MasterdataTimeOff {
+  code        String?
+  description String?
+  icon        String?
+  id          String   @id(map: "TimeOff_pkey") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  isActive    Boolean? @map("is_active")
+  name        String?
+  totalDays   Int?     @map("total_days") @db.SmallInt
+
+  @@map("Masterdata.TimeOff")
+  @@schema("public")
+}
+
+model UserAsset {
+  assetId  String?   @map("asset_id") @db.Uuid
+  id       String    @id(map: "Company.Asset_pkey") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  status   Int?      @db.SmallInt
+  userInfo UserInfo? @relation(fields: [user_id], references: [id])
+  user_id  String?
+
+  @@map("User.Asset")
+  @@schema("public")
+}
+
+model UserExpenseRequest {
+  approvedAt    DateTime? @map("approved_at") @db.Timestamptz(6)
+  approverInfo  UserInfo? @relation(name: "approverExpenseRequest", fields: [approver_id], references: [id])
+  approver_id   String?
+  attachments   Json?     @db.Json
+  category      String?
+  id            String    @id(map: "Company.Expense.Request_pkey") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  note          String?
+  purchaseDate  DateTime? @map("purchase_date") @db.Timestamptz(6)
+  requestedAt   DateTime? @map("requested_at") @db.Timestamptz(6)
+  requesterInfo UserInfo? @relation(name: "requesterExpenseRequest", fields: [requester_id], references: [id])
+  requester_id  String?
+  status        Int?      @db.SmallInt
+  taxAmount     Float?    @map("tax_amount")
+  title         String?
+  totalAmount   Float?    @map("total_amount")
+
+  @@map("User.Expense.Request")
+  @@schema("public")
+}
+
+model UserInfo {
+  address                      String?
+  approverExpenseRequest       UserExpenseRequest[]      @relation(name: "approverExpenseRequest")
+  approverTimeoffRequest       UserTimeOffRequest[]      @relation(name: "approverTimeoffRequest")
+  approverTimetrackingRequest  UserTimeTrackingRequest[] @relation(name: "approverTimetrackingRequest")
+  businessEmail                String?                   @map("business_email")
+  citizenship                  String?                   @db.Uuid
+  city                         String?
+  companyCalendar              CompanyCalendar[]
+  companyNews                  CompanyNew[]
+  country                      String?                   @db.Uuid
+  documents                    Json?                     @db.Json
+  educations                   Json?                     @db.Json
+  emergencyContacts            Json?                     @map("emergency_contacts") @db.Json
+  employeeNumber               String?                   @map("employee_number")
+  firstName                    String?                   @map("first_name")
+  gender                       Int?                      @db.SmallInt
+  id                           String                    @id @default(cuid()) @db.Uuid
+  jobs                         Json?                     @db.Json
+  lastName                     String?                   @map("last_name")
+  managerId                    String?                   @map("manager_id") @db.Uuid
+  martialStatus                Int?                      @map("martial_status") @db.SmallInt
+  nationality                  String?                   @db.Uuid
+  personalEmail                String?                   @map("personal_email")
+  phone                        String?
+  postcode                     String?
+  requesterExpenseRequest      UserExpenseRequest[]      @relation(name: "requesterExpenseRequest")
+  requesterInfo                CompanyRecognition[]      @relation(name: "CompanyRecognitionRequesterInfoUserInfoRequesterInfo")
+  requesterTimetrackingRequest UserTimeTrackingRequest[] @relation(name: "requesterTimetrackingRequest")
+  socialContacts               Json?                     @map("social_contacts") @db.Json
+  timeoffs                     Json?                     @db.Json
+  userAsset                    UserAsset[]
+  userInfo                     CompanyRecognition[]      @relation(name: "CompanyRecognitionUserInfoUserInfoUserInfo")
+  userSurveyResponse           UserSurveyResponse[]
+  userTimeoffRequest           UserTimeOffRequest[]      @relation(name: "userTimeoffRequest")
+
+  @@map("User.Info")
+  @@schema("public")
+}
+
+model UserNotification {
+  content   String?
+  createdAt DateTime? @map("created_at") @db.Timestamptz(6)
+  id        String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  isRead    Boolean?  @map("is_read")
+  title     String?
+  userId    String?   @default(dbgenerated("gen_random_uuid()")) @map("user_id") @db.Uuid
+
+  @@map("User.Notification")
+  @@schema("public")
+}
+
+model UserRole {
+  id     String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  roleId String? @map("role_id") @db.Uuid
+  userId String? @map("user_id") @db.Uuid
+
+  @@map("User.Role")
+  @@schema("public")
+}
+
+model UserSurveyResponse {
+  companySurvey CompanySurvey? @relation(fields: [survey_id], references: [id])
+  survey_id     String?
+  id            String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  responseJson  Json?          @map("response_json") @db.Json
+  submittedAt   DateTime?      @map("submitted_at") @db.Timestamptz(6)
+  userInfo      UserInfo?      @relation(fields: [user_id], references: [id])
+  user_id       String?
+
+  @@map("User.Survey.Response")
+  @@schema("public")
+}
+
+model UserTimeOffRequest {
+  approverInfo UserInfo? @relation(name: "approverTimeoffRequest", fields: [approver_id], references: [id])
+  approver_id  String?
+  id           String    @id(map: "Company.TimeOff.Request_pkey") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  note         String?
+  numDays      Int?      @map("num_days") @db.SmallInt
+  periodEnd    DateTime? @map("period_end") @db.Timestamptz(6)
+  periodStart  DateTime? @map("period_start") @db.Timestamptz(6)
+  status       Int?      @db.SmallInt
+  userInfo     UserInfo? @relation(name: "userTimeoffRequest", fields: [user_id], references: [id])
+  user_id      String?
+
+  @@map("User.TimeOff.Request")
+  @@schema("public")
+}
+
+model UserTimeTrackingRequest {
+  approvedAt    DateTime?                       @map("approved_at") @db.Timestamptz(6)
+  approverInfo  UserInfo?                       @relation(name: "approverTimetrackingRequest", fields: [approver_id], references: [id])
+  approver_id   String?
+  details       UserTimeTrackingRequestDetail[]
+  id            String                          @id(map: "Company.TimeTracking_pkey") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name          String?
+  requestedAt   DateTime?                       @map("requested_at") @db.Timestamptz(6)
+  requesterInfo UserInfo?                       @relation(name: "requesterTimetrackingRequest", fields: [requester_id], references: [id])
+  requester_id  String?
+  status        Int?                            @db.SmallInt
+
+  @@map("User.TimeTracking.Request")
+  @@schema("public")
+}
+
+model UserTimeTrackingRequestDetail {
+  date             DateTime?                @db.Timestamptz(6)
+  fromTime         String?                  @map("from_time")
+  id               String                   @id(map: "Company.TimeTracking.Detail_pkey") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  note             String?
+  numberHours      Int?                     @map("number_hours") @db.SmallInt
+  timetrackingInfo UserTimeTrackingRequest? @relation(fields: [timetracking_id], references: [id])
+  timetracking_id  String?
+  toTime           String?                  @map("to_time")
+
+  @@map("User.TimeTracking.Request.Detail")
+  @@schema("public")
+}

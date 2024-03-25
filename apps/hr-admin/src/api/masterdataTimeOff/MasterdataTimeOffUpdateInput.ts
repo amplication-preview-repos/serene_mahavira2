@@ -1,0 +1,8 @@
+export type MasterdataTimeOffUpdateInput = {
+  code?: string | null;
+  description?: string | null;
+  icon?: string | null;
+  isActive?: boolean | null;
+  name?: string | null;
+  totalDays?: number | null;
+};
