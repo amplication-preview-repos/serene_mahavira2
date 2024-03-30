@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+                 package userTimeTrackingRequestDetail;
+service UserTimeTrackingRequestDetailService {
+ rpc createUserTimeTrackingRequestDetail (UserTimeTrackingRequestDetailCreateInput) returns (UserTimeTrackingRequestDetail) {}
+rpc userTimeTrackingRequestDetails (findManyParams) returns (stream UserTimeTrackingRequestDetail) {}
+rpc userTimeTrackingRequestDetail (UserTimeTrackingRequestDetailWhereUniqueInput) returns (UserTimeTrackingRequestDetail) {}
+rpc updateUserTimeTrackingRequestDetail (UserTimeTrackingRequestDetailUpdateInput) returns (UserTimeTrackingRequestDetail) {}
+rpc deleteUserTimeTrackingRequestDetail (UserTimeTrackingRequestDetailWhereUniqueInput) returns (UserTimeTrackingRequestDetail) {} 
+ }
+message UserTimeTrackingRequestDetailCreateInput {
+string date = 1;
+string fromTime = 2;
+string id = 3;
+string note = 4;
+int32 numberHours = 5;
+string toTime = 6;
+};
+message UserTimeTrackingRequestDetail {
+string date = 1;
+string fromTime = 2;
+string id = 3;
+string note = 4;
+int32 numberHours = 5;
+string toTime = 6;
+};
+message UserTimeTrackingRequestDetailWhereUniqueInput {
+string date = 1;
+string fromTime = 2;
+string id = 3;
+string note = 4;
+int32 numberHours = 5;
+string toTime = 6;
+};
+message UserTimeTrackingRequestDetailUpdateInput {
+string date = 1;
+string fromTime = 2;
+string id = 3;
+string note = 4;
+int32 numberHours = 5;
+string toTime = 6;
+};
+message findManyParams {
+
+};

@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+                 package companyRecognition;
+service CompanyRecognitionService {
+ rpc createCompanyRecognition (CompanyRecognitionCreateInput) returns (CompanyRecognition) {}
+rpc companyRecognitions (findManyParams) returns (stream CompanyRecognition) {}
+rpc companyRecognition (CompanyRecognitionWhereUniqueInput) returns (CompanyRecognition) {}
+rpc updateCompanyRecognition (CompanyRecognitionUpdateInput) returns (CompanyRecognition) {}
+rpc deleteCompanyRecognition (CompanyRecognitionWhereUniqueInput) returns (CompanyRecognition) {} 
+ }
+message CompanyRecognitionCreateInput {
+string description = 1;
+string id = 2;
+string title = 3;
+};
+message CompanyRecognition {
+string description = 1;
+string id = 2;
+string title = 3;
+};
+message CompanyRecognitionWhereUniqueInput {
+string description = 1;
+string id = 2;
+string title = 3;
+};
+message CompanyRecognitionUpdateInput {
+string description = 1;
+string id = 2;
+string title = 3;
+};
+message findManyParams {
+
+};

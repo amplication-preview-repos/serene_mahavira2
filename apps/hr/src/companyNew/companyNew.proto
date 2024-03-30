@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+                 package companyNew;
+service CompanyNewService {
+ rpc createCompanyNew (CompanyNewCreateInput) returns (CompanyNew) {}
+rpc companyNews (findManyParams) returns (stream CompanyNew) {}
+rpc companyNew (CompanyNewWhereUniqueInput) returns (CompanyNew) {}
+rpc updateCompanyNew (CompanyNewUpdateInput) returns (CompanyNew) {}
+rpc deleteCompanyNew (CompanyNewWhereUniqueInput) returns (CompanyNew) {} 
+ }
+message CompanyNewCreateInput {
+string content = 1;
+string id = 2;
+string imagePath = 3;
+string publishedDate = 4;
+int32 status = 5;
+string tags = 6;
+string title = 7;
+};
+message CompanyNew {
+string content = 1;
+string id = 2;
+string imagePath = 3;
+string publishedDate = 4;
+int32 status = 5;
+string tags = 6;
+string title = 7;
+};
+message CompanyNewWhereUniqueInput {
+string content = 1;
+string id = 2;
+string imagePath = 3;
+string publishedDate = 4;
+int32 status = 5;
+string tags = 6;
+string title = 7;
+};
+message CompanyNewUpdateInput {
+string content = 1;
+string id = 2;
+string imagePath = 3;
+string publishedDate = 4;
+int32 status = 5;
+string tags = 6;
+string title = 7;
+};
+message findManyParams {
+
+};

@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+                 package companyJob;
+service CompanyJobService {
+ rpc createCompanyJob (CompanyJobCreateInput) returns (CompanyJob) {}
+rpc companyJobs (findManyParams) returns (stream CompanyJob) {}
+rpc companyJob (CompanyJobWhereUniqueInput) returns (CompanyJob) {}
+rpc updateCompanyJob (CompanyJobUpdateInput) returns (CompanyJob) {}
+rpc deleteCompanyJob (CompanyJobWhereUniqueInput) returns (CompanyJob) {} 
+ }
+message CompanyJobCreateInput {
+string contractTypeId = 1;
+string department = 2;
+string descriptionJob = 3;
+string id = 4;
+string location = 5;
+string stages = 6;
+string title = 7;
+};
+message CompanyJob {
+string contractTypeId = 1;
+string department = 2;
+string descriptionJob = 3;
+string id = 4;
+string location = 5;
+string stages = 6;
+string title = 7;
+};
+message CompanyJobWhereUniqueInput {
+string contractTypeId = 1;
+string department = 2;
+string descriptionJob = 3;
+string id = 4;
+string location = 5;
+string stages = 6;
+string title = 7;
+};
+message CompanyJobUpdateInput {
+string contractTypeId = 1;
+string department = 2;
+string descriptionJob = 3;
+string id = 4;
+string location = 5;
+string stages = 6;
+string title = 7;
+};
+message findManyParams {
+
+};

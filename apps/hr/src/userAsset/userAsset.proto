@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+                 package userAsset;
+service UserAssetService {
+ rpc createUserAsset (UserAssetCreateInput) returns (UserAsset) {}
+rpc userAssets (findManyParams) returns (stream UserAsset) {}
+rpc userAsset (UserAssetWhereUniqueInput) returns (UserAsset) {}
+rpc updateUserAsset (UserAssetUpdateInput) returns (UserAsset) {}
+rpc deleteUserAsset (UserAssetWhereUniqueInput) returns (UserAsset) {} 
+ }
+message UserAssetCreateInput {
+string assetId = 1;
+string id = 2;
+int32 status = 3;
+};
+message UserAsset {
+string assetId = 1;
+string id = 2;
+int32 status = 3;
+};
+message UserAssetWhereUniqueInput {
+string assetId = 1;
+string id = 2;
+int32 status = 3;
+};
+message UserAssetUpdateInput {
+string assetId = 1;
+string id = 2;
+int32 status = 3;
+};
+message findManyParams {
+
+};

@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+                 package userNotification;
+service UserNotificationService {
+ rpc createUserNotification (UserNotificationCreateInput) returns (UserNotification) {}
+rpc userNotifications (findManyParams) returns (stream UserNotification) {}
+rpc userNotification (UserNotificationWhereUniqueInput) returns (UserNotification) {}
+rpc updateUserNotification (UserNotificationUpdateInput) returns (UserNotification) {}
+rpc deleteUserNotification (UserNotificationWhereUniqueInput) returns (UserNotification) {} 
+ }
+message UserNotificationCreateInput {
+string content = 1;
+string createdAt = 2;
+string id = 3;
+bool isRead = 4;
+string title = 5;
+string userId = 6;
+};
+message UserNotification {
+string content = 1;
+string createdAt = 2;
+string id = 3;
+bool isRead = 4;
+string title = 5;
+string userId = 6;
+};
+message UserNotificationWhereUniqueInput {
+string content = 1;
+string createdAt = 2;
+string id = 3;
+bool isRead = 4;
+string title = 5;
+string userId = 6;
+};
+message UserNotificationUpdateInput {
+string content = 1;
+string createdAt = 2;
+string id = 3;
+bool isRead = 4;
+string title = 5;
+string userId = 6;
+};
+message findManyParams {
+
+};

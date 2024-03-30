@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+                 package masterdataAsset;
+service MasterdataAssetService {
+ rpc createMasterdataAsset (MasterdataAssetCreateInput) returns (MasterdataAsset) {}
+rpc masterdataAssets (findManyParams) returns (stream MasterdataAsset) {}
+rpc masterdataAsset (MasterdataAssetWhereUniqueInput) returns (MasterdataAsset) {}
+rpc updateMasterdataAsset (MasterdataAssetUpdateInput) returns (MasterdataAsset) {}
+rpc deleteMasterdataAsset (MasterdataAssetWhereUniqueInput) returns (MasterdataAsset) {} 
+ }
+message MasterdataAssetCreateInput {
+string code = 1;
+string id = 2;
+string name = 3;
+int32 remainingAsset = 4;
+int32 totalAsset = 5;
+};
+message MasterdataAsset {
+string code = 1;
+string id = 2;
+string name = 3;
+int32 remainingAsset = 4;
+int32 totalAsset = 5;
+};
+message MasterdataAssetWhereUniqueInput {
+string code = 1;
+string id = 2;
+string name = 3;
+int32 remainingAsset = 4;
+int32 totalAsset = 5;
+};
+message MasterdataAssetUpdateInput {
+string code = 1;
+string id = 2;
+string name = 3;
+int32 remainingAsset = 4;
+int32 totalAsset = 5;
+};
+message findManyParams {
+
+};

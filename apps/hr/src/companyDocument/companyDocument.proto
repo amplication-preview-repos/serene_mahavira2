@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+                 package companyDocument;
+service CompanyDocumentService {
+ rpc createCompanyDocument (CompanyDocumentCreateInput) returns (CompanyDocument) {}
+rpc companyDocuments (findManyParams) returns (stream CompanyDocument) {}
+rpc companyDocument (CompanyDocumentWhereUniqueInput) returns (CompanyDocument) {}
+rpc updateCompanyDocument (CompanyDocumentUpdateInput) returns (CompanyDocument) {}
+rpc deleteCompanyDocument (CompanyDocumentWhereUniqueInput) returns (CompanyDocument) {} 
+ }
+message CompanyDocumentCreateInput {
+string description = 1;
+int32 fileSize = 2;
+string fileType = 3;
+int32 id = 4;
+string name = 5;
+string path = 6;
+string publishedAt = 7;
+};
+message CompanyDocument {
+string description = 1;
+int32 fileSize = 2;
+string fileType = 3;
+int32 id = 4;
+string name = 5;
+string path = 6;
+string publishedAt = 7;
+};
+message CompanyDocumentWhereUniqueInput {
+string description = 1;
+int32 fileSize = 2;
+string fileType = 3;
+int32 id = 4;
+string name = 5;
+string path = 6;
+string publishedAt = 7;
+};
+message CompanyDocumentUpdateInput {
+string description = 1;
+int32 fileSize = 2;
+string fileType = 3;
+int32 id = 4;
+string name = 5;
+string path = 6;
+string publishedAt = 7;
+};
+message findManyParams {
+
+};
