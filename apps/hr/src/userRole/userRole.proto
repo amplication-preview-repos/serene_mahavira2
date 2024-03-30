@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+                 package userRole;
+service UserRoleService {
+ rpc createUserRole (UserRoleCreateInput) returns (UserRole) {}
+rpc userRoles (findManyParams) returns (stream UserRole) {}
+rpc userRole (UserRoleWhereUniqueInput) returns (UserRole) {}
+rpc updateUserRole (UserRoleUpdateInput) returns (UserRole) {}
+rpc deleteUserRole (UserRoleWhereUniqueInput) returns (UserRole) {} 
+ }
+message UserRoleCreateInput {
+string id = 1;
+string roleId = 2;
+string userId = 3;
+};
+message UserRole {
+string id = 1;
+string roleId = 2;
+string userId = 3;
+};
+message UserRoleWhereUniqueInput {
+string id = 1;
+string roleId = 2;
+string userId = 3;
+};
+message UserRoleUpdateInput {
+string id = 1;
+string roleId = 2;
+string userId = 3;
+};
+message findManyParams {
+
+};

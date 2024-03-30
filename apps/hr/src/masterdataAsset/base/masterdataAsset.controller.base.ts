@@ -27,6 +27,9 @@ export class MasterdataAssetControllerBase {
   constructor(protected readonly service: MasterdataAssetService) {}
   @common.Post()
   @swagger.ApiCreatedResponse({ type: MasterdataAsset })
+  @swagger.ApiBody({
+    type: MasterdataAssetCreateInput,
+  })
   async createMasterdataAsset(
     @common.Body() data: MasterdataAssetCreateInput
   ): Promise<MasterdataAsset> {
@@ -88,6 +91,9 @@ export class MasterdataAssetControllerBase {
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: MasterdataAsset })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @swagger.ApiBody({
+    type: MasterdataAssetUpdateInput,
+  })
   async updateMasterdataAsset(
     @common.Param() params: MasterdataAssetWhereUniqueInput,
     @common.Body() data: MasterdataAssetUpdateInput

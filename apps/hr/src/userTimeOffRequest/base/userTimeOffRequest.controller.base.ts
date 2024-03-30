@@ -27,6 +27,9 @@ export class UserTimeOffRequestControllerBase {
   constructor(protected readonly service: UserTimeOffRequestService) {}
   @common.Post()
   @swagger.ApiCreatedResponse({ type: UserTimeOffRequest })
+  @swagger.ApiBody({
+    type: UserTimeOffRequestCreateInput,
+  })
   async createUserTimeOffRequest(
     @common.Body() data: UserTimeOffRequestCreateInput
   ): Promise<UserTimeOffRequest> {
@@ -141,6 +144,9 @@ export class UserTimeOffRequestControllerBase {
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: UserTimeOffRequest })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @swagger.ApiBody({
+    type: UserTimeOffRequestUpdateInput,
+  })
   async updateUserTimeOffRequest(
     @common.Param() params: UserTimeOffRequestWhereUniqueInput,
     @common.Body() data: UserTimeOffRequestUpdateInput

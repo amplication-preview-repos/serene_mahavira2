@@ -27,6 +27,9 @@ export class UserAssetControllerBase {
   constructor(protected readonly service: UserAssetService) {}
   @common.Post()
   @swagger.ApiCreatedResponse({ type: UserAsset })
+  @swagger.ApiBody({
+    type: UserAssetCreateInput,
+  })
   async createUserAsset(
     @common.Body() data: UserAssetCreateInput
   ): Promise<UserAsset> {
@@ -106,6 +109,9 @@ export class UserAssetControllerBase {
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: UserAsset })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @swagger.ApiBody({
+    type: UserAssetUpdateInput,
+  })
   async updateUserAsset(
     @common.Param() params: UserAssetWhereUniqueInput,
     @common.Body() data: UserAssetUpdateInput

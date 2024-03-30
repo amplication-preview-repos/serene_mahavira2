@@ -30,6 +30,9 @@ export class UserTimeTrackingRequestControllerBase {
   constructor(protected readonly service: UserTimeTrackingRequestService) {}
   @common.Post()
   @swagger.ApiCreatedResponse({ type: UserTimeTrackingRequest })
+  @swagger.ApiBody({
+    type: UserTimeTrackingRequestCreateInput,
+  })
   async createUserTimeTrackingRequest(
     @common.Body() data: UserTimeTrackingRequestCreateInput
   ): Promise<UserTimeTrackingRequest> {
@@ -150,6 +153,9 @@ export class UserTimeTrackingRequestControllerBase {
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: UserTimeTrackingRequest })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @swagger.ApiBody({
+    type: UserTimeTrackingRequestUpdateInput,
+  })
   async updateUserTimeTrackingRequest(
     @common.Param() params: UserTimeTrackingRequestWhereUniqueInput,
     @common.Body() data: UserTimeTrackingRequestUpdateInput

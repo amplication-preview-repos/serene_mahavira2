@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+                 package companySurveyField;
+service CompanySurveyFieldService {
+ rpc createCompanySurveyField (CompanySurveyFieldCreateInput) returns (CompanySurveyField) {}
+rpc companySurveyFields (findManyParams) returns (stream CompanySurveyField) {}
+rpc companySurveyField (CompanySurveyFieldWhereUniqueInput) returns (CompanySurveyField) {}
+rpc updateCompanySurveyField (CompanySurveyFieldUpdateInput) returns (CompanySurveyField) {}
+rpc deleteCompanySurveyField (CompanySurveyFieldWhereUniqueInput) returns (CompanySurveyField) {} 
+ }
+message CompanySurveyFieldCreateInput {
+string fieldConfig = 1;
+string fieldType = 2;
+string id = 3;
+bool isRequired = 4;
+string label = 5;
+int32 position = 6;
+};
+message CompanySurveyField {
+string fieldConfig = 1;
+string fieldType = 2;
+string id = 3;
+bool isRequired = 4;
+string label = 5;
+int32 position = 6;
+};
+message CompanySurveyFieldWhereUniqueInput {
+string fieldConfig = 1;
+string fieldType = 2;
+string id = 3;
+bool isRequired = 4;
+string label = 5;
+int32 position = 6;
+};
+message CompanySurveyFieldUpdateInput {
+string fieldConfig = 1;
+string fieldType = 2;
+string id = 3;
+bool isRequired = 4;
+string label = 5;
+int32 position = 6;
+};
+message findManyParams {
+
+};

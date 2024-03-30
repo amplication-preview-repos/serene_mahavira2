@@ -27,6 +27,9 @@ export class UserNotificationControllerBase {
   constructor(protected readonly service: UserNotificationService) {}
   @common.Post()
   @swagger.ApiCreatedResponse({ type: UserNotification })
+  @swagger.ApiBody({
+    type: UserNotificationCreateInput,
+  })
   async createUserNotification(
     @common.Body() data: UserNotificationCreateInput
   ): Promise<UserNotification> {
@@ -91,6 +94,9 @@ export class UserNotificationControllerBase {
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: UserNotification })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @swagger.ApiBody({
+    type: UserNotificationUpdateInput,
+  })
   async updateUserNotification(
     @common.Param() params: UserNotificationWhereUniqueInput,
     @common.Body() data: UserNotificationUpdateInput

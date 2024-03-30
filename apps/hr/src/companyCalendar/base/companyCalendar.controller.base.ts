@@ -27,6 +27,9 @@ export class CompanyCalendarControllerBase {
   constructor(protected readonly service: CompanyCalendarService) {}
   @common.Post()
   @swagger.ApiCreatedResponse({ type: CompanyCalendar })
+  @swagger.ApiBody({
+    type: CompanyCalendarCreateInput,
+  })
   async createCompanyCalendar(
     @common.Body() data: CompanyCalendarCreateInput
   ): Promise<CompanyCalendar> {
@@ -129,6 +132,9 @@ export class CompanyCalendarControllerBase {
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: CompanyCalendar })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @swagger.ApiBody({
+    type: CompanyCalendarUpdateInput,
+  })
   async updateCompanyCalendar(
     @common.Param() params: CompanyCalendarWhereUniqueInput,
     @common.Body() data: CompanyCalendarUpdateInput

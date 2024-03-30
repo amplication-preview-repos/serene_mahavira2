@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+                 package companySurvey;
+service CompanySurveyService {
+ rpc createCompanySurvey (CompanySurveyCreateInput) returns (CompanySurvey) {}
+rpc companySurveys (findManyParams) returns (stream CompanySurvey) {}
+rpc companySurvey (CompanySurveyWhereUniqueInput) returns (CompanySurvey) {}
+rpc updateCompanySurvey (CompanySurveyUpdateInput) returns (CompanySurvey) {}
+rpc deleteCompanySurvey (CompanySurveyWhereUniqueInput) returns (CompanySurvey) {}
+rpc findManyCompanySurvey (CompanySurveyWhereUniqueInput) returns (stream CompanySurveyField) {}
+rpc updateCompanySurvey (CompanySurveyFieldParams) returns (stream CompanySurveyField) {}
+rpc connectCompanySurvey (CompanySurveyFieldParams) returns (CompanySurveyField) {}
+rpc disconnectCompanySurvey (CompanySurveyFieldParams) returns (CompanySurveyField) {}
+rpc findManyCompanySurvey (CompanySurveyWhereUniqueInput) returns (stream UserSurveyResponse) {}
+rpc updateCompanySurvey (UserSurveyResponseParams) returns (stream UserSurveyResponse) {}
+rpc connectCompanySurvey (UserSurveyResponseParams) returns (UserSurveyResponse) {}
+rpc disconnectCompanySurvey (UserSurveyResponseParams) returns (UserSurveyResponse) {} 
+ }
+message CompanySurveyCreateInput {
+repeated CompanySurveyField companySurveyFields = 1;
+string description = 2;
+string id = 3;
+string name = 4;
+repeated UserSurveyResponse userSurveyResponse = 5;
+};
+message CompanySurvey {
+repeated CompanySurveyField companySurveyFields = 1;
+string description = 2;
+string id = 3;
+string name = 4;
+repeated UserSurveyResponse userSurveyResponse = 5;
+};
+message CompanySurveyWhereUniqueInput {
+repeated CompanySurveyField companySurveyFields = 1;
+string description = 2;
+string id = 3;
+string name = 4;
+repeated UserSurveyResponse userSurveyResponse = 5;
+};
+message CompanySurveyUpdateInput {
+repeated CompanySurveyField companySurveyFields = 1;
+string description = 2;
+string id = 3;
+string name = 4;
+repeated UserSurveyResponse userSurveyResponse = 5;
+};
+message findManyParams {
+
+};
+message CompanySurveyField {
+string fieldConfig = 1;
+string fieldType = 2;
+string id = 3;
+bool isRequired = 4;
+string label = 5;
+int32 position = 6;
+};
+message CompanySurveyFieldWhereUniqueInput {
+string fieldConfig = 1;
+string fieldType = 2;
+string id = 3;
+bool isRequired = 4;
+string label = 5;
+int32 position = 6;
+};
+message CompanySurveyFieldParams {
+CompanySurveyWhereUniqueInput companySurveyWhereUniqueInput = 1;
+CompanySurveyFieldWhereUniqueInput companysurveyfieldWhereUniqueInput = 2;
+};
+message UserSurveyResponse {
+string id = 1;
+string responseJson = 2;
+string submittedAt = 3;
+};
+message UserSurveyResponseWhereUniqueInput {
+string id = 1;
+string responseJson = 2;
+string submittedAt = 3;
+};
+message UserSurveyResponseParams {
+CompanySurveyWhereUniqueInput companySurveyWhereUniqueInput = 1;
+UserSurveyResponseWhereUniqueInput usersurveyresponseWhereUniqueInput = 2;
+};

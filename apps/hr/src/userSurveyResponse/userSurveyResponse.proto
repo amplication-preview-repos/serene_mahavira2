@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+                 package userSurveyResponse;
+service UserSurveyResponseService {
+ rpc createUserSurveyResponse (UserSurveyResponseCreateInput) returns (UserSurveyResponse) {}
+rpc userSurveyResponses (findManyParams) returns (stream UserSurveyResponse) {}
+rpc userSurveyResponse (UserSurveyResponseWhereUniqueInput) returns (UserSurveyResponse) {}
+rpc updateUserSurveyResponse (UserSurveyResponseUpdateInput) returns (UserSurveyResponse) {}
+rpc deleteUserSurveyResponse (UserSurveyResponseWhereUniqueInput) returns (UserSurveyResponse) {} 
+ }
+message UserSurveyResponseCreateInput {
+string id = 1;
+string responseJson = 2;
+string submittedAt = 3;
+};
+message UserSurveyResponse {
+string id = 1;
+string responseJson = 2;
+string submittedAt = 3;
+};
+message UserSurveyResponseWhereUniqueInput {
+string id = 1;
+string responseJson = 2;
+string submittedAt = 3;
+};
+message UserSurveyResponseUpdateInput {
+string id = 1;
+string responseJson = 2;
+string submittedAt = 3;
+};
+message findManyParams {
+
+};

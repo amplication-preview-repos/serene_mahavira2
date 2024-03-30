@@ -27,6 +27,9 @@ export class CompanyRecognitionControllerBase {
   constructor(protected readonly service: CompanyRecognitionService) {}
   @common.Post()
   @swagger.ApiCreatedResponse({ type: CompanyRecognition })
+  @swagger.ApiBody({
+    type: CompanyRecognitionCreateInput,
+  })
   async createCompanyRecognition(
     @common.Body() data: CompanyRecognitionCreateInput
   ): Promise<CompanyRecognition> {
@@ -135,6 +138,9 @@ export class CompanyRecognitionControllerBase {
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: CompanyRecognition })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @swagger.ApiBody({
+    type: CompanyRecognitionUpdateInput,
+  })
   async updateCompanyRecognition(
     @common.Param() params: CompanyRecognitionWhereUniqueInput,
     @common.Body() data: CompanyRecognitionUpdateInput

@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+                 package userExpenseRequest;
+service UserExpenseRequestService {
+ rpc createUserExpenseRequest (UserExpenseRequestCreateInput) returns (UserExpenseRequest) {}
+rpc userExpenseRequests (findManyParams) returns (stream UserExpenseRequest) {}
+rpc userExpenseRequest (UserExpenseRequestWhereUniqueInput) returns (UserExpenseRequest) {}
+rpc updateUserExpenseRequest (UserExpenseRequestUpdateInput) returns (UserExpenseRequest) {}
+rpc deleteUserExpenseRequest (UserExpenseRequestWhereUniqueInput) returns (UserExpenseRequest) {} 
+ }
+message UserExpenseRequestCreateInput {
+string approvedAt = 1;
+string attachments = 2;
+string category = 3;
+string id = 4;
+string note = 5;
+string purchaseDate = 6;
+string requestedAt = 7;
+int32 status = 8;
+int32 taxAmount = 9;
+string title = 10;
+int32 totalAmount = 11;
+};
+message UserExpenseRequest {
+string approvedAt = 1;
+string attachments = 2;
+string category = 3;
+string id = 4;
+string note = 5;
+string purchaseDate = 6;
+string requestedAt = 7;
+int32 status = 8;
+int32 taxAmount = 9;
+string title = 10;
+int32 totalAmount = 11;
+};
+message UserExpenseRequestWhereUniqueInput {
+string approvedAt = 1;
+string attachments = 2;
+string category = 3;
+string id = 4;
+string note = 5;
+string purchaseDate = 6;
+string requestedAt = 7;
+int32 status = 8;
+int32 taxAmount = 9;
+string title = 10;
+int32 totalAmount = 11;
+};
+message UserExpenseRequestUpdateInput {
+string approvedAt = 1;
+string attachments = 2;
+string category = 3;
+string id = 4;
+string note = 5;
+string purchaseDate = 6;
+string requestedAt = 7;
+int32 status = 8;
+int32 taxAmount = 9;
+string title = 10;
+int32 totalAmount = 11;
+};
+message findManyParams {
+
+};

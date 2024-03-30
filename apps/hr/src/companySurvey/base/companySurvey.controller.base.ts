@@ -33,6 +33,9 @@ export class CompanySurveyControllerBase {
   constructor(protected readonly service: CompanySurveyService) {}
   @common.Post()
   @swagger.ApiCreatedResponse({ type: CompanySurvey })
+  @swagger.ApiBody({
+    type: CompanySurveyCreateInput,
+  })
   async createCompanySurvey(
     @common.Body() data: CompanySurveyCreateInput
   ): Promise<CompanySurvey> {
@@ -88,6 +91,9 @@ export class CompanySurveyControllerBase {
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: CompanySurvey })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @swagger.ApiBody({
+    type: CompanySurveyUpdateInput,
+  })
   async updateCompanySurvey(
     @common.Param() params: CompanySurveyWhereUniqueInput,
     @common.Body() data: CompanySurveyUpdateInput

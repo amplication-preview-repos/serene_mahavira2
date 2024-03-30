@@ -27,6 +27,9 @@ export class CompanyStructureControllerBase {
   constructor(protected readonly service: CompanyStructureService) {}
   @common.Post()
   @swagger.ApiCreatedResponse({ type: CompanyStructure })
+  @swagger.ApiBody({
+    type: CompanyStructureCreateInput,
+  })
   async createCompanyStructure(
     @common.Body() data: CompanyStructureCreateInput
   ): Promise<CompanyStructure> {
@@ -88,6 +91,9 @@ export class CompanyStructureControllerBase {
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: CompanyStructure })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @swagger.ApiBody({
+    type: CompanyStructureUpdateInput,
+  })
   async updateCompanyStructure(
     @common.Param() params: CompanyStructureWhereUniqueInput,
     @common.Body() data: CompanyStructureUpdateInput

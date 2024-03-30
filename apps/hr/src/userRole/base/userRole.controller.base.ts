@@ -27,6 +27,9 @@ export class UserRoleControllerBase {
   constructor(protected readonly service: UserRoleService) {}
   @common.Post()
   @swagger.ApiCreatedResponse({ type: UserRole })
+  @swagger.ApiBody({
+    type: UserRoleCreateInput,
+  })
   async createUserRole(
     @common.Body() data: UserRoleCreateInput
   ): Promise<UserRole> {
@@ -80,6 +83,9 @@ export class UserRoleControllerBase {
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: UserRole })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @swagger.ApiBody({
+    type: UserRoleUpdateInput,
+  })
   async updateUserRole(
     @common.Param() params: UserRoleWhereUniqueInput,
     @common.Body() data: UserRoleUpdateInput

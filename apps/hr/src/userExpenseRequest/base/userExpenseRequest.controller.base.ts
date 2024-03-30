@@ -27,6 +27,9 @@ export class UserExpenseRequestControllerBase {
   constructor(protected readonly service: UserExpenseRequestService) {}
   @common.Post()
   @swagger.ApiCreatedResponse({ type: UserExpenseRequest })
+  @swagger.ApiBody({
+    type: UserExpenseRequestCreateInput,
+  })
   async createUserExpenseRequest(
     @common.Body() data: UserExpenseRequestCreateInput
   ): Promise<UserExpenseRequest> {
@@ -162,6 +165,9 @@ export class UserExpenseRequestControllerBase {
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: UserExpenseRequest })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @swagger.ApiBody({
+    type: UserExpenseRequestUpdateInput,
+  })
   async updateUserExpenseRequest(
     @common.Param() params: UserExpenseRequestWhereUniqueInput,
     @common.Body() data: UserExpenseRequestUpdateInput

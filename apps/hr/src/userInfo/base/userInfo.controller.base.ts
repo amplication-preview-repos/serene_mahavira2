@@ -51,6 +51,9 @@ export class UserInfoControllerBase {
   constructor(protected readonly service: UserInfoService) {}
   @common.Post()
   @swagger.ApiCreatedResponse({ type: UserInfo })
+  @swagger.ApiBody({
+    type: UserInfoCreateInput,
+  })
   async createUserInfo(
     @common.Body() data: UserInfoCreateInput
   ): Promise<UserInfo> {
@@ -161,6 +164,9 @@ export class UserInfoControllerBase {
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: UserInfo })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @swagger.ApiBody({
+    type: UserInfoUpdateInput,
+  })
   async updateUserInfo(
     @common.Param() params: UserInfoWhereUniqueInput,
     @common.Body() data: UserInfoUpdateInput

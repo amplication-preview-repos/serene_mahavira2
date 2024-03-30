@@ -2,11 +2,12 @@ import { Module } from "@nestjs/common";
 import { CompanySurveyModuleBase } from "./base/companySurvey.module.base";
 import { CompanySurveyService } from "./companySurvey.service";
 import { CompanySurveyController } from "./companySurvey.controller";
+import { CompanySurveyGrpcController } from "./companySurvey.grpc.controller";
 import { CompanySurveyResolver } from "./companySurvey.resolver";
 
 @Module({
   imports: [CompanySurveyModuleBase],
-  controllers: [CompanySurveyController],
+  controllers: [CompanySurveyController, CompanySurveyGrpcController],
   providers: [CompanySurveyService, CompanySurveyResolver],
   exports: [CompanySurveyService],
 })

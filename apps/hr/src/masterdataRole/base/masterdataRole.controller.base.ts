@@ -27,6 +27,9 @@ export class MasterdataRoleControllerBase {
   constructor(protected readonly service: MasterdataRoleService) {}
   @common.Post()
   @swagger.ApiCreatedResponse({ type: MasterdataRole })
+  @swagger.ApiBody({
+    type: MasterdataRoleCreateInput,
+  })
   async createMasterdataRole(
     @common.Body() data: MasterdataRoleCreateInput
   ): Promise<MasterdataRole> {
@@ -85,6 +88,9 @@ export class MasterdataRoleControllerBase {
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: MasterdataRole })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @swagger.ApiBody({
+    type: MasterdataRoleUpdateInput,
+  })
   async updateMasterdataRole(
     @common.Param() params: MasterdataRoleWhereUniqueInput,
     @common.Body() data: MasterdataRoleUpdateInput

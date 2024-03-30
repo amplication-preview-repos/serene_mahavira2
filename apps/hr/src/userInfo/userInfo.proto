@@ -1,0 +1,365 @@
+syntax = "proto3";
+
+                 package userInfo;
+service UserInfoService {
+ rpc createUserInfo (UserInfoCreateInput) returns (UserInfo) {}
+rpc userInfos (findManyParams) returns (stream UserInfo) {}
+rpc userInfo (UserInfoWhereUniqueInput) returns (UserInfo) {}
+rpc updateUserInfo (UserInfoUpdateInput) returns (UserInfo) {}
+rpc deleteUserInfo (UserInfoWhereUniqueInput) returns (UserInfo) {}
+rpc findManyApproverInfo (UserInfoWhereUniqueInput) returns (stream UserExpenseRequest) {}
+rpc updateApproverInfo (UserExpenseRequestParams) returns (stream UserExpenseRequest) {}
+rpc connectApproverInfo (UserExpenseRequestParams) returns (UserExpenseRequest) {}
+rpc disconnectApproverInfo (UserExpenseRequestParams) returns (UserExpenseRequest) {}
+rpc findManyApproverInfo (UserInfoWhereUniqueInput) returns (stream UserTimeOffRequest) {}
+rpc updateApproverInfo (UserTimeOffRequestParams) returns (stream UserTimeOffRequest) {}
+rpc connectApproverInfo (UserTimeOffRequestParams) returns (UserTimeOffRequest) {}
+rpc disconnectApproverInfo (UserTimeOffRequestParams) returns (UserTimeOffRequest) {}
+rpc findManyApproverInfo (UserInfoWhereUniqueInput) returns (stream UserTimeTrackingRequest) {}
+rpc updateApproverInfo (UserTimeTrackingRequestParams) returns (stream UserTimeTrackingRequest) {}
+rpc connectApproverInfo (UserTimeTrackingRequestParams) returns (UserTimeTrackingRequest) {}
+rpc disconnectApproverInfo (UserTimeTrackingRequestParams) returns (UserTimeTrackingRequest) {}
+rpc findManyUserInfo (UserInfoWhereUniqueInput) returns (stream CompanyCalendar) {}
+rpc updateUserInfo (CompanyCalendarParams) returns (stream CompanyCalendar) {}
+rpc connectUserInfo (CompanyCalendarParams) returns (CompanyCalendar) {}
+rpc disconnectUserInfo (CompanyCalendarParams) returns (CompanyCalendar) {}
+rpc findManyUserInfo (UserInfoWhereUniqueInput) returns (stream CompanyNew) {}
+rpc updateUserInfo (CompanyNewParams) returns (stream CompanyNew) {}
+rpc connectUserInfo (CompanyNewParams) returns (CompanyNew) {}
+rpc disconnectUserInfo (CompanyNewParams) returns (CompanyNew) {}
+rpc findManyRequesterInfo (UserInfoWhereUniqueInput) returns (stream UserExpenseRequest) {}
+rpc updateRequesterInfo (UserExpenseRequestParams) returns (stream UserExpenseRequest) {}
+rpc connectRequesterInfo (UserExpenseRequestParams) returns (UserExpenseRequest) {}
+rpc disconnectRequesterInfo (UserExpenseRequestParams) returns (UserExpenseRequest) {}
+rpc findManyRequesterInfo (UserInfoWhereUniqueInput) returns (stream CompanyRecognition) {}
+rpc updateRequesterInfo (CompanyRecognitionParams) returns (stream CompanyRecognition) {}
+rpc connectRequesterInfo (CompanyRecognitionParams) returns (CompanyRecognition) {}
+rpc disconnectRequesterInfo (CompanyRecognitionParams) returns (CompanyRecognition) {}
+rpc findManyRequesterInfo (UserInfoWhereUniqueInput) returns (stream UserTimeTrackingRequest) {}
+rpc updateRequesterInfo (UserTimeTrackingRequestParams) returns (stream UserTimeTrackingRequest) {}
+rpc connectRequesterInfo (UserTimeTrackingRequestParams) returns (UserTimeTrackingRequest) {}
+rpc disconnectRequesterInfo (UserTimeTrackingRequestParams) returns (UserTimeTrackingRequest) {}
+rpc findManyUserInfo (UserInfoWhereUniqueInput) returns (stream UserAsset) {}
+rpc updateUserInfo (UserAssetParams) returns (stream UserAsset) {}
+rpc connectUserInfo (UserAssetParams) returns (UserAsset) {}
+rpc disconnectUserInfo (UserAssetParams) returns (UserAsset) {}
+rpc findManyUserInfo (UserInfoWhereUniqueInput) returns (stream CompanyRecognition) {}
+rpc updateUserInfo (CompanyRecognitionParams) returns (stream CompanyRecognition) {}
+rpc connectUserInfo (CompanyRecognitionParams) returns (CompanyRecognition) {}
+rpc disconnectUserInfo (CompanyRecognitionParams) returns (CompanyRecognition) {}
+rpc findManyUserInfo (UserInfoWhereUniqueInput) returns (stream UserSurveyResponse) {}
+rpc updateUserInfo (UserSurveyResponseParams) returns (stream UserSurveyResponse) {}
+rpc connectUserInfo (UserSurveyResponseParams) returns (UserSurveyResponse) {}
+rpc disconnectUserInfo (UserSurveyResponseParams) returns (UserSurveyResponse) {}
+rpc findManyUserInfo (UserInfoWhereUniqueInput) returns (stream UserTimeOffRequest) {}
+rpc updateUserInfo (UserTimeOffRequestParams) returns (stream UserTimeOffRequest) {}
+rpc connectUserInfo (UserTimeOffRequestParams) returns (UserTimeOffRequest) {}
+rpc disconnectUserInfo (UserTimeOffRequestParams) returns (UserTimeOffRequest) {} 
+ }
+message UserInfoCreateInput {
+string address = 1;
+repeated UserExpenseRequest approverExpenseRequest = 2;
+repeated UserTimeOffRequest approverTimeoffRequest = 3;
+repeated UserTimeTrackingRequest approverTimetrackingRequest = 4;
+string businessEmail = 5;
+string citizenship = 6;
+string city = 7;
+repeated CompanyCalendar companyCalendar = 8;
+repeated CompanyNew companyNews = 9;
+string country = 10;
+string documents = 11;
+string educations = 12;
+string emergencyContacts = 13;
+string employeeNumber = 14;
+string firstName = 15;
+int32 gender = 16;
+string id = 17;
+string jobs = 18;
+string lastName = 19;
+string managerId = 20;
+int32 martialStatus = 21;
+string nationality = 22;
+string personalEmail = 23;
+string phone = 24;
+string postcode = 25;
+repeated UserExpenseRequest requesterExpenseRequest = 26;
+repeated CompanyRecognition requesterInfo = 27;
+repeated UserTimeTrackingRequest requesterTimetrackingRequest = 28;
+string socialContacts = 29;
+string timeoffs = 30;
+repeated UserAsset userAsset = 31;
+repeated CompanyRecognition userInfo = 32;
+repeated UserSurveyResponse userSurveyResponse = 33;
+repeated UserTimeOffRequest userTimeoffRequest = 34;
+};
+message UserInfo {
+string address = 1;
+repeated UserExpenseRequest approverExpenseRequest = 2;
+repeated UserTimeOffRequest approverTimeoffRequest = 3;
+repeated UserTimeTrackingRequest approverTimetrackingRequest = 4;
+string businessEmail = 5;
+string citizenship = 6;
+string city = 7;
+repeated CompanyCalendar companyCalendar = 8;
+repeated CompanyNew companyNews = 9;
+string country = 10;
+string documents = 11;
+string educations = 12;
+string emergencyContacts = 13;
+string employeeNumber = 14;
+string firstName = 15;
+int32 gender = 16;
+string id = 17;
+string jobs = 18;
+string lastName = 19;
+string managerId = 20;
+int32 martialStatus = 21;
+string nationality = 22;
+string personalEmail = 23;
+string phone = 24;
+string postcode = 25;
+repeated UserExpenseRequest requesterExpenseRequest = 26;
+repeated CompanyRecognition requesterInfo = 27;
+repeated UserTimeTrackingRequest requesterTimetrackingRequest = 28;
+string socialContacts = 29;
+string timeoffs = 30;
+repeated UserAsset userAsset = 31;
+repeated CompanyRecognition userInfo = 32;
+repeated UserSurveyResponse userSurveyResponse = 33;
+repeated UserTimeOffRequest userTimeoffRequest = 34;
+};
+message UserInfoWhereUniqueInput {
+string address = 1;
+repeated UserExpenseRequest approverExpenseRequest = 2;
+repeated UserTimeOffRequest approverTimeoffRequest = 3;
+repeated UserTimeTrackingRequest approverTimetrackingRequest = 4;
+string businessEmail = 5;
+string citizenship = 6;
+string city = 7;
+repeated CompanyCalendar companyCalendar = 8;
+repeated CompanyNew companyNews = 9;
+string country = 10;
+string documents = 11;
+string educations = 12;
+string emergencyContacts = 13;
+string employeeNumber = 14;
+string firstName = 15;
+int32 gender = 16;
+string id = 17;
+string jobs = 18;
+string lastName = 19;
+string managerId = 20;
+int32 martialStatus = 21;
+string nationality = 22;
+string personalEmail = 23;
+string phone = 24;
+string postcode = 25;
+repeated UserExpenseRequest requesterExpenseRequest = 26;
+repeated CompanyRecognition requesterInfo = 27;
+repeated UserTimeTrackingRequest requesterTimetrackingRequest = 28;
+string socialContacts = 29;
+string timeoffs = 30;
+repeated UserAsset userAsset = 31;
+repeated CompanyRecognition userInfo = 32;
+repeated UserSurveyResponse userSurveyResponse = 33;
+repeated UserTimeOffRequest userTimeoffRequest = 34;
+};
+message UserInfoUpdateInput {
+string address = 1;
+repeated UserExpenseRequest approverExpenseRequest = 2;
+repeated UserTimeOffRequest approverTimeoffRequest = 3;
+repeated UserTimeTrackingRequest approverTimetrackingRequest = 4;
+string businessEmail = 5;
+string citizenship = 6;
+string city = 7;
+repeated CompanyCalendar companyCalendar = 8;
+repeated CompanyNew companyNews = 9;
+string country = 10;
+string documents = 11;
+string educations = 12;
+string emergencyContacts = 13;
+string employeeNumber = 14;
+string firstName = 15;
+int32 gender = 16;
+string id = 17;
+string jobs = 18;
+string lastName = 19;
+string managerId = 20;
+int32 martialStatus = 21;
+string nationality = 22;
+string personalEmail = 23;
+string phone = 24;
+string postcode = 25;
+repeated UserExpenseRequest requesterExpenseRequest = 26;
+repeated CompanyRecognition requesterInfo = 27;
+repeated UserTimeTrackingRequest requesterTimetrackingRequest = 28;
+string socialContacts = 29;
+string timeoffs = 30;
+repeated UserAsset userAsset = 31;
+repeated CompanyRecognition userInfo = 32;
+repeated UserSurveyResponse userSurveyResponse = 33;
+repeated UserTimeOffRequest userTimeoffRequest = 34;
+};
+message findManyParams {
+
+};
+message UserExpenseRequest {
+string approvedAt = 1;
+string attachments = 2;
+string category = 3;
+string id = 4;
+string note = 5;
+string purchaseDate = 6;
+string requestedAt = 7;
+int32 status = 8;
+int32 taxAmount = 9;
+string title = 10;
+int32 totalAmount = 11;
+};
+message UserExpenseRequestWhereUniqueInput {
+string approvedAt = 1;
+string attachments = 2;
+string category = 3;
+string id = 4;
+string note = 5;
+string purchaseDate = 6;
+string requestedAt = 7;
+int32 status = 8;
+int32 taxAmount = 9;
+string title = 10;
+int32 totalAmount = 11;
+};
+message UserExpenseRequestParams {
+UserInfoWhereUniqueInput userInfoWhereUniqueInput = 1;
+UserExpenseRequestWhereUniqueInput userexpenserequestWhereUniqueInput = 2;
+};
+message UserTimeOffRequest {
+string id = 1;
+string note = 2;
+int32 numDays = 3;
+string periodEnd = 4;
+string periodStart = 5;
+int32 status = 6;
+};
+message UserTimeOffRequestWhereUniqueInput {
+string id = 1;
+string note = 2;
+int32 numDays = 3;
+string periodEnd = 4;
+string periodStart = 5;
+int32 status = 6;
+};
+message UserTimeOffRequestParams {
+UserInfoWhereUniqueInput userInfoWhereUniqueInput = 1;
+UserTimeOffRequestWhereUniqueInput usertimeoffrequestWhereUniqueInput = 2;
+};
+message UserTimeTrackingRequest {
+string approvedAt = 1;
+string id = 2;
+string name = 3;
+string requestedAt = 4;
+int32 status = 5;
+};
+message UserTimeTrackingRequestWhereUniqueInput {
+string approvedAt = 1;
+string id = 2;
+string name = 3;
+string requestedAt = 4;
+int32 status = 5;
+};
+message UserTimeTrackingRequestParams {
+UserInfoWhereUniqueInput userInfoWhereUniqueInput = 1;
+UserTimeTrackingRequestWhereUniqueInput usertimetrackingrequestWhereUniqueInput = 2;
+};
+message CompanyCalendar {
+int32 calendarType = 1;
+string configNotify = 2;
+int32 duration = 3;
+string endDate = 4;
+string id = 5;
+string location = 6;
+string members = 7;
+string name = 8;
+string note = 9;
+string startDate = 10;
+};
+message CompanyCalendarWhereUniqueInput {
+int32 calendarType = 1;
+string configNotify = 2;
+int32 duration = 3;
+string endDate = 4;
+string id = 5;
+string location = 6;
+string members = 7;
+string name = 8;
+string note = 9;
+string startDate = 10;
+};
+message CompanyCalendarParams {
+UserInfoWhereUniqueInput userInfoWhereUniqueInput = 1;
+CompanyCalendarWhereUniqueInput companycalendarWhereUniqueInput = 2;
+};
+message CompanyNew {
+string content = 1;
+string id = 2;
+string imagePath = 3;
+string publishedDate = 4;
+int32 status = 5;
+string tags = 6;
+string title = 7;
+};
+message CompanyNewWhereUniqueInput {
+string content = 1;
+string id = 2;
+string imagePath = 3;
+string publishedDate = 4;
+int32 status = 5;
+string tags = 6;
+string title = 7;
+};
+message CompanyNewParams {
+UserInfoWhereUniqueInput userInfoWhereUniqueInput = 1;
+CompanyNewWhereUniqueInput companynewWhereUniqueInput = 2;
+};
+message CompanyRecognition {
+string description = 1;
+string id = 2;
+string title = 3;
+};
+message CompanyRecognitionWhereUniqueInput {
+string description = 1;
+string id = 2;
+string title = 3;
+};
+message CompanyRecognitionParams {
+UserInfoWhereUniqueInput userInfoWhereUniqueInput = 1;
+CompanyRecognitionWhereUniqueInput companyrecognitionWhereUniqueInput = 2;
+};
+message UserAsset {
+string assetId = 1;
+string id = 2;
+int32 status = 3;
+};
+message UserAssetWhereUniqueInput {
+string assetId = 1;
+string id = 2;
+int32 status = 3;
+};
+message UserAssetParams {
+UserInfoWhereUniqueInput userInfoWhereUniqueInput = 1;
+UserAssetWhereUniqueInput userassetWhereUniqueInput = 2;
+};
+message UserSurveyResponse {
+string id = 1;
+string responseJson = 2;
+string submittedAt = 3;
+};
+message UserSurveyResponseWhereUniqueInput {
+string id = 1;
+string responseJson = 2;
+string submittedAt = 3;
+};
+message UserSurveyResponseParams {
+UserInfoWhereUniqueInput userInfoWhereUniqueInput = 1;
+UserSurveyResponseWhereUniqueInput usersurveyresponseWhereUniqueInput = 2;
+};

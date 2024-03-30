@@ -1,4 +1,17 @@
 import { Module } from "@nestjs/common";
+
+import {
+  OpenTelemetryModule,
+  PipeInjector,
+  ControllerInjector,
+  EventEmitterInjector,
+  GraphQLResolverInjector,
+  GuardInjector,
+} from "@amplication/opentelemetry-nestjs";
+
+import { HttpInstrumentation } from "@opentelemetry/instrumentation-http";
+import { OTLPTraceExporter } from "@opentelemetry/exporter-trace-otlp-grpc";
+import { BatchSpanProcessor } from "@opentelemetry/sdk-trace-node";
 import { CompanyCalendarModule } from "./companyCalendar/companyCalendar.module";
 import { CompanyDocumentModule } from "./companyDocument/companyDocument.module";
 import { CompanyJobModule } from "./companyJob/companyJob.module";
@@ -30,9 +43,12 @@ import { ConfigModule, ConfigService } from "@nestjs/config";
 import { GraphQLModule } from "@nestjs/graphql";
 import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
 
+import { LoggerModule } from "./logger/logger.module";
+
 @Module({
   controllers: [],
   imports: [
+    LoggerModule,
     CompanyCalendarModule,
     CompanyDocumentModule,
     CompanyJobModule,
@@ -76,6 +92,26 @@ import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
       },
       inject: [ConfigService],
       imports: [ConfigModule],
+    }),
+    OpenTelemetryModule.forRoot({
+      serviceName: "HR ",
+      spanProcessor: new BatchSpanProcessor(new OTLPTraceExporter()),
+      instrumentations: [
+        new HttpInstrumentation({
+          requestHook: (span, request) => {
+            if (request.method)
+              span.setAttribute("http.method", request.method);
+          },
+        }),
+      ],
+
+      traceAutoInjectors: [
+        ControllerInjector,
+        EventEmitterInjector,
+        GraphQLResolverInjector,
+        GuardInjector,
+        PipeInjector,
+      ],
     }),
   ],
   providers: [],

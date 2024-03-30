@@ -27,6 +27,9 @@ export class MasterdataTaskControllerBase {
   constructor(protected readonly service: MasterdataTaskService) {}
   @common.Post()
   @swagger.ApiCreatedResponse({ type: MasterdataTask })
+  @swagger.ApiBody({
+    type: MasterdataTaskCreateInput,
+  })
   async createMasterdataTask(
     @common.Body() data: MasterdataTaskCreateInput
   ): Promise<MasterdataTask> {
@@ -88,6 +91,9 @@ export class MasterdataTaskControllerBase {
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: MasterdataTask })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @swagger.ApiBody({
+    type: MasterdataTaskUpdateInput,
+  })
   async updateMasterdataTask(
     @common.Param() params: MasterdataTaskWhereUniqueInput,
     @common.Body() data: MasterdataTaskUpdateInput

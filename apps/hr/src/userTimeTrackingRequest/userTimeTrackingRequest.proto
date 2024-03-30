@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+                 package userTimeTrackingRequest;
+service UserTimeTrackingRequestService {
+ rpc createUserTimeTrackingRequest (UserTimeTrackingRequestCreateInput) returns (UserTimeTrackingRequest) {}
+rpc userTimeTrackingRequests (findManyParams) returns (stream UserTimeTrackingRequest) {}
+rpc userTimeTrackingRequest (UserTimeTrackingRequestWhereUniqueInput) returns (UserTimeTrackingRequest) {}
+rpc updateUserTimeTrackingRequest (UserTimeTrackingRequestUpdateInput) returns (UserTimeTrackingRequest) {}
+rpc deleteUserTimeTrackingRequest (UserTimeTrackingRequestWhereUniqueInput) returns (UserTimeTrackingRequest) {}
+rpc findManyTimetrackingInfo (UserTimeTrackingRequestWhereUniqueInput) returns (stream UserTimeTrackingRequestDetail) {}
+rpc updateTimetrackingInfo (UserTimeTrackingRequestDetailParams) returns (stream UserTimeTrackingRequestDetail) {}
+rpc connectTimetrackingInfo (UserTimeTrackingRequestDetailParams) returns (UserTimeTrackingRequestDetail) {}
+rpc disconnectTimetrackingInfo (UserTimeTrackingRequestDetailParams) returns (UserTimeTrackingRequestDetail) {} 
+ }
+message UserTimeTrackingRequestCreateInput {
+string approvedAt = 1;
+repeated UserTimeTrackingRequestDetail details = 2;
+string id = 3;
+string name = 4;
+string requestedAt = 5;
+int32 status = 6;
+};
+message UserTimeTrackingRequest {
+string approvedAt = 1;
+repeated UserTimeTrackingRequestDetail details = 2;
+string id = 3;
+string name = 4;
+string requestedAt = 5;
+int32 status = 6;
+};
+message UserTimeTrackingRequestWhereUniqueInput {
+string approvedAt = 1;
+repeated UserTimeTrackingRequestDetail details = 2;
+string id = 3;
+string name = 4;
+string requestedAt = 5;
+int32 status = 6;
+};
+message UserTimeTrackingRequestUpdateInput {
+string approvedAt = 1;
+repeated UserTimeTrackingRequestDetail details = 2;
+string id = 3;
+string name = 4;
+string requestedAt = 5;
+int32 status = 6;
+};
+message findManyParams {
+
+};
+message UserTimeTrackingRequestDetail {
+string date = 1;
+string fromTime = 2;
+string id = 3;
+string note = 4;
+int32 numberHours = 5;
+string toTime = 6;
+};
+message UserTimeTrackingRequestDetailWhereUniqueInput {
+string date = 1;
+string fromTime = 2;
+string id = 3;
+string note = 4;
+int32 numberHours = 5;
+string toTime = 6;
+};
+message UserTimeTrackingRequestDetailParams {
+UserTimeTrackingRequestWhereUniqueInput userTimeTrackingRequestWhereUniqueInput = 1;
+UserTimeTrackingRequestDetailWhereUniqueInput usertimetrackingrequestdetailWhereUniqueInput = 2;
+};

@@ -29,6 +29,9 @@ export class UserTimeTrackingRequestDetailControllerBase {
   ) {}
   @common.Post()
   @swagger.ApiCreatedResponse({ type: UserTimeTrackingRequestDetail })
+  @swagger.ApiBody({
+    type: UserTimeTrackingRequestDetailCreateInput,
+  })
   async createUserTimeTrackingRequestDetail(
     @common.Body() data: UserTimeTrackingRequestDetailCreateInput
   ): Promise<UserTimeTrackingRequestDetail> {
@@ -125,6 +128,9 @@ export class UserTimeTrackingRequestDetailControllerBase {
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: UserTimeTrackingRequestDetail })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @swagger.ApiBody({
+    type: UserTimeTrackingRequestDetailUpdateInput,
+  })
   async updateUserTimeTrackingRequestDetail(
     @common.Param() params: UserTimeTrackingRequestDetailWhereUniqueInput,
     @common.Body() data: UserTimeTrackingRequestDetailUpdateInput

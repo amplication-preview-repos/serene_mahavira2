@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+                 package companyCalendar;
+service CompanyCalendarService {
+ rpc createCompanyCalendar (CompanyCalendarCreateInput) returns (CompanyCalendar) {}
+rpc companyCalendars (findManyParams) returns (stream CompanyCalendar) {}
+rpc companyCalendar (CompanyCalendarWhereUniqueInput) returns (CompanyCalendar) {}
+rpc updateCompanyCalendar (CompanyCalendarUpdateInput) returns (CompanyCalendar) {}
+rpc deleteCompanyCalendar (CompanyCalendarWhereUniqueInput) returns (CompanyCalendar) {} 
+ }
+message CompanyCalendarCreateInput {
+int32 calendarType = 1;
+string configNotify = 2;
+int32 duration = 3;
+string endDate = 4;
+string id = 5;
+string location = 6;
+string members = 7;
+string name = 8;
+string note = 9;
+string startDate = 10;
+};
+message CompanyCalendar {
+int32 calendarType = 1;
+string configNotify = 2;
+int32 duration = 3;
+string endDate = 4;
+string id = 5;
+string location = 6;
+string members = 7;
+string name = 8;
+string note = 9;
+string startDate = 10;
+};
+message CompanyCalendarWhereUniqueInput {
+int32 calendarType = 1;
+string configNotify = 2;
+int32 duration = 3;
+string endDate = 4;
+string id = 5;
+string location = 6;
+string members = 7;
+string name = 8;
+string note = 9;
+string startDate = 10;
+};
+message CompanyCalendarUpdateInput {
+int32 calendarType = 1;
+string configNotify = 2;
+int32 duration = 3;
+string endDate = 4;
+string id = 5;
+string location = 6;
+string members = 7;
+string name = 8;
+string note = 9;
+string startDate = 10;
+};
+message findManyParams {
+
+};

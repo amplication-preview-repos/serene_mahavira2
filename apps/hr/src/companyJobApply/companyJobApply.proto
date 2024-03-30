@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+                 package companyJobApply;
+service CompanyJobApplyService {
+ rpc createCompanyJobApply (CompanyJobApplyCreateInput) returns (CompanyJobApply) {}
+rpc companyJobApplies (findManyParams) returns (stream CompanyJobApply) {}
+rpc companyJobApply (CompanyJobApplyWhereUniqueInput) returns (CompanyJobApply) {}
+rpc updateCompanyJobApply (CompanyJobApplyUpdateInput) returns (CompanyJobApply) {}
+rpc deleteCompanyJobApply (CompanyJobApplyWhereUniqueInput) returns (CompanyJobApply) {} 
+ }
+message CompanyJobApplyCreateInput {
+string address = 1;
+string companyJobId = 2;
+string email = 3;
+string fullName = 4;
+string id = 5;
+string phone = 6;
+string resumePath = 7;
+int32 status = 8;
+};
+message CompanyJobApply {
+string address = 1;
+string companyJobId = 2;
+string email = 3;
+string fullName = 4;
+string id = 5;
+string phone = 6;
+string resumePath = 7;
+int32 status = 8;
+};
+message CompanyJobApplyWhereUniqueInput {
+string address = 1;
+string companyJobId = 2;
+string email = 3;
+string fullName = 4;
+string id = 5;
+string phone = 6;
+string resumePath = 7;
+int32 status = 8;
+};
+message CompanyJobApplyUpdateInput {
+string address = 1;
+string companyJobId = 2;
+string email = 3;
+string fullName = 4;
+string id = 5;
+string phone = 6;
+string resumePath = 7;
+int32 status = 8;
+};
+message findManyParams {
+
+};

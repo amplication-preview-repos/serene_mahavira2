@@ -27,6 +27,9 @@ export class MasterdataTimeOffControllerBase {
   constructor(protected readonly service: MasterdataTimeOffService) {}
   @common.Post()
   @swagger.ApiCreatedResponse({ type: MasterdataTimeOff })
+  @swagger.ApiBody({
+    type: MasterdataTimeOffCreateInput,
+  })
   async createMasterdataTimeOff(
     @common.Body() data: MasterdataTimeOffCreateInput
   ): Promise<MasterdataTimeOff> {
@@ -94,6 +97,9 @@ export class MasterdataTimeOffControllerBase {
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: MasterdataTimeOff })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @swagger.ApiBody({
+    type: MasterdataTimeOffUpdateInput,
+  })
   async updateMasterdataTimeOff(
     @common.Param() params: MasterdataTimeOffWhereUniqueInput,
     @common.Body() data: MasterdataTimeOffUpdateInput

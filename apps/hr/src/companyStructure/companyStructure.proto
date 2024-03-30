@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+                 package companyStructure;
+service CompanyStructureService {
+ rpc createCompanyStructure (CompanyStructureCreateInput) returns (CompanyStructure) {}
+rpc companyStructures (findManyParams) returns (stream CompanyStructure) {}
+rpc companyStructure (CompanyStructureWhereUniqueInput) returns (CompanyStructure) {}
+rpc updateCompanyStructure (CompanyStructureUpdateInput) returns (CompanyStructure) {}
+rpc deleteCompanyStructure (CompanyStructureWhereUniqueInput) returns (CompanyStructure) {} 
+ }
+message CompanyStructureCreateInput {
+string code = 1;
+string description = 2;
+string id = 3;
+string name = 4;
+string parentId = 5;
+};
+message CompanyStructure {
+string code = 1;
+string description = 2;
+string id = 3;
+string name = 4;
+string parentId = 5;
+};
+message CompanyStructureWhereUniqueInput {
+string code = 1;
+string description = 2;
+string id = 3;
+string name = 4;
+string parentId = 5;
+};
+message CompanyStructureUpdateInput {
+string code = 1;
+string description = 2;
+string id = 3;
+string name = 4;
+string parentId = 5;
+};
+message findManyParams {
+
+};

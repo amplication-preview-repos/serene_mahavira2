@@ -27,6 +27,9 @@ export class CompanyDocumentControllerBase {
   constructor(protected readonly service: CompanyDocumentService) {}
   @common.Post()
   @swagger.ApiCreatedResponse({ type: CompanyDocument })
+  @swagger.ApiBody({
+    type: CompanyDocumentCreateInput,
+  })
   async createCompanyDocument(
     @common.Body() data: CompanyDocumentCreateInput
   ): Promise<CompanyDocument> {
@@ -94,6 +97,9 @@ export class CompanyDocumentControllerBase {
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: CompanyDocument })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @swagger.ApiBody({
+    type: CompanyDocumentUpdateInput,
+  })
   async updateCompanyDocument(
     @common.Param() params: CompanyDocumentWhereUniqueInput,
     @common.Body() data: CompanyDocumentUpdateInput

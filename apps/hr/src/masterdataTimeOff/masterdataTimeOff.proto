@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+                 package masterdataTimeOff;
+service MasterdataTimeOffService {
+ rpc createMasterdataTimeOff (MasterdataTimeOffCreateInput) returns (MasterdataTimeOff) {}
+rpc masterdataTimeOffs (findManyParams) returns (stream MasterdataTimeOff) {}
+rpc masterdataTimeOff (MasterdataTimeOffWhereUniqueInput) returns (MasterdataTimeOff) {}
+rpc updateMasterdataTimeOff (MasterdataTimeOffUpdateInput) returns (MasterdataTimeOff) {}
+rpc deleteMasterdataTimeOff (MasterdataTimeOffWhereUniqueInput) returns (MasterdataTimeOff) {} 
+ }
+message MasterdataTimeOffCreateInput {
+string code = 1;
+string description = 2;
+string icon = 3;
+string id = 4;
+bool isActive = 5;
+string name = 6;
+int32 totalDays = 7;
+};
+message MasterdataTimeOff {
+string code = 1;
+string description = 2;
+string icon = 3;
+string id = 4;
+bool isActive = 5;
+string name = 6;
+int32 totalDays = 7;
+};
+message MasterdataTimeOffWhereUniqueInput {
+string code = 1;
+string description = 2;
+string icon = 3;
+string id = 4;
+bool isActive = 5;
+string name = 6;
+int32 totalDays = 7;
+};
+message MasterdataTimeOffUpdateInput {
+string code = 1;
+string description = 2;
+string icon = 3;
+string id = 4;
+bool isActive = 5;
+string name = 6;
+int32 totalDays = 7;
+};
+message findManyParams {
+
+};
